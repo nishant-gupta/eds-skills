@@ -4,6 +4,7 @@ description: Use this skill when the user wants to visually compare production p
 license: Apache-2.0
 metadata:
   version: "1.0.0"
+allowed-tools: Bash(node:*) Bash(npm:*) Bash(npx:*) Bash(cd:*) Bash(mkdir:*) Bash(zip:*) Bash(open:*) Read Write Agent
 ---
 
 # EDS Visual Compare

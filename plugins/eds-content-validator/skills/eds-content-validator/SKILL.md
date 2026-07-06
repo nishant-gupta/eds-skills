@@ -4,6 +4,7 @@ description: Use this skill when the user wants to validate, audit, or compare t
 license: Apache-2.0
 metadata:
   version: "1.1.0"
+allowed-tools: Bash(node:*) Bash(npm:*) Bash(npx:*) Bash(cd:*) Bash(mkdir:*) Bash(zip:*) Read Write Agent
 ---
 
 # EDS Content Validator

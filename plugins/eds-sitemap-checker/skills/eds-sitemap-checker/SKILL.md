@@ -4,6 +4,7 @@ description: Use this skill when the user wants to check, audit, or validate URL
 license: Apache-2.0
 metadata:
   version: "1.0.0"
+allowed-tools: Bash(curl:*) Bash(node:*) Read Write
 ---
 
 # EDS Sitemap Checker

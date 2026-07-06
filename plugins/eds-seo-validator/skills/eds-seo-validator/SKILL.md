@@ -4,6 +4,7 @@ description: Use this skill when the user wants to validate, audit, or check SEO
 license: Apache-2.0
 metadata:
   version: "4.0.0"
+allowed-tools: Bash(curl:*) Bash(node:*) Bash(npm:*) Bash(npx:*) Bash(cd:*) Bash(mkdir:*) Bash(zip:*) Read Write
 ---
 
 # EDS SEO Validator
