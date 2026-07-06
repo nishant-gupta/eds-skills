@@ -46,6 +46,12 @@ for SKILL in "${SKILLS[@]}"; do
     cp "${PLUGIN_DIR}/skills/${SKILL}/SKILL.md" "${TARGET_DIR}/SKILL.md"
   fi
 
+  # Copy references directory (e.g. SEO checklist)
+  if [ -d "${PLUGIN_DIR}/skills/${SKILL}/references" ]; then
+    mkdir -p "${TARGET_DIR}/references"
+    cp "${PLUGIN_DIR}/skills/${SKILL}/references/"* "${TARGET_DIR}/references/"
+  fi
+
   # Copy scripts
   if [ -d "${PLUGIN_DIR}/scripts" ]; then
     mkdir -p "${TARGET_DIR}/scripts"
