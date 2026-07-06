@@ -3,7 +3,7 @@ name: eds-seo-validator
 description: Use this skill when the user wants to validate, audit, or check SEO metadata on AEM Edge Delivery Services (EDS) pages. Triggers on phrases like "SEO validation", "check meta tags", "validate metadata", "check title and description", "OG tags audit", "twitter card check", "SEO audit EDS pages", "check page metadata", "deep SEO check", "detailed SEO validation", "full SEO audit", "core web vitals", "CWV check", "lighthouse audit", "PageSpeed Insights", "compare seo", "seo migration check", "seo parity", "nothing missed in migration".
 license: Apache-2.0
 metadata:
-  version: "4.0.0"
+  version: "1.0.0"
 allowed-tools: Bash(curl:*) Bash(node:*) Bash(npm:*) Bash(npx:*) Bash(cd:*) Bash(mkdir:*) Bash(zip:*) Read Write
 ---
 

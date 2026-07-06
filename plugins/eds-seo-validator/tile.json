@@ -1,6 +1,6 @@
 {
   "name": "eds-seo-validator",
-  "version": "4.0.0",
+  "version": "1.0.0",
   "summary": "SEO audit toolkit for AEM Edge Delivery Services sites — fast metadata check, deep 68-point Playwright audit, Core Web Vitals via PageSpeed Insights, and prod-vs-EDS SEO comparison.",
   "private": false,
   "skills": {
