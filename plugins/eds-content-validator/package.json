@@ -1,0 +1,11 @@
+{
+  "name": "eds-content-compare",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Content comparison between prod and EDS live sites",
+  "dependencies": {
+    "dictionary-en": "^4.0.0",
+    "nspell": "^2.1.5",
+    "playwright": "^1.40.0"
+  }
+}

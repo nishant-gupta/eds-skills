@@ -1,0 +1,43 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "eds-skills",
+  "description": "AEM Edge Delivery Services audit and validation skills for Claude Code",
+  "owner": {
+    "name": "Nishant Gupta"
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "category": "development",
+    "keywords": ["aem", "eds", "edge-delivery-services", "seo", "sitemap", "content-validation"]
+  },
+  "plugins": [
+    {
+      "name": "eds-sitemap-checker",
+      "source": "./plugins/eds-sitemap-checker",
+      "description": "Fetch a live site's sitemap and check each URL against the EDS domain for HTTP status",
+      "category": "development",
+      "keywords": ["aem", "eds", "sitemap", "url-check", "migration"]
+    },
+    {
+      "name": "eds-seo-validator",
+      "source": "./plugins/eds-seo-validator",
+      "description": "Fast, deep, CWV, and comparison SEO audits for AEM Edge Delivery Services sites",
+      "category": "development",
+      "keywords": ["aem", "eds", "seo", "metadata", "core-web-vitals", "lighthouse"]
+    },
+    {
+      "name": "eds-content-validator",
+      "source": "./plugins/eds-content-validator",
+      "description": "Content parity and quality audit between production and EDS sites",
+      "category": "development",
+      "keywords": ["aem", "eds", "content", "migration", "parity"]
+    },
+    {
+      "name": "eds-visual-compare",
+      "source": "./plugins/eds-visual-compare",
+      "description": "Screenshot diff to catch visual and layout regressions between prod and EDS",
+      "category": "development",
+      "keywords": ["aem", "eds", "visual", "screenshot", "regression"]
+    }
+  ]
+}

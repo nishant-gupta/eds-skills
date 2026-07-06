@@ -1,0 +1,11 @@
+{
+  "name": "eds-content-validator",
+  "description": "Content parity and quality audit for AEM Edge Delivery Services migrations. Three modes: fast Jaccard similarity comparison, deep Playwright comparison (lazy-loaded content), and standalone EDS site audit (placeholders, broken links, image alt text).",
+  "version": "1.0.0",
+  "author": {
+    "name": "Nishant Gupta"
+  },
+  "license": "Apache-2.0",
+  "keywords": ["aem", "eds", "content", "migration", "parity", "playwright", "jaccard", "quality-gate"],
+  "repository": "https://github.com/nishantgupta/eds-skills"
+}

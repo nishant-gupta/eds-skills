@@ -1,0 +1,11 @@
+{
+  "name": "eds-seo-validator",
+  "description": "SEO audit toolkit for AEM Edge Delivery Services sites. Four modes: fast metadata check, deep 68-point Playwright audit, Core Web Vitals via PageSpeed Insights API, and prod-vs-EDS SEO migration comparison.",
+  "version": "4.0.0",
+  "author": {
+    "name": "Nishant Gupta"
+  },
+  "license": "Apache-2.0",
+  "keywords": ["aem", "eds", "seo", "metadata", "core-web-vitals", "lighthouse", "playwright", "og-tags", "structured-data"],
+  "repository": "https://github.com/nishantgupta/eds-skills"
+}

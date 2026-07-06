@@ -1,0 +1,11 @@
+{
+  "name": "eds-sitemap-checker",
+  "description": "Fetch a live site's sitemap and check each URL against the AEM EDS domain for HTTP status (200, 404, redirect, or error). Produces a CSV report and migration completeness summary.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Nishant Gupta"
+  },
+  "license": "Apache-2.0",
+  "keywords": ["aem", "eds", "sitemap", "url-check", "migration", "404"],
+  "repository": "https://github.com/nishantgupta/eds-skills"
+}

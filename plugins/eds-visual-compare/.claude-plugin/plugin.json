@@ -1,0 +1,11 @@
+{
+  "name": "eds-visual-compare",
+  "description": "Screenshot diff to catch visual and layout regressions between production and AEM Edge Delivery Services sites. Uses Playwright to render both sites and produce side-by-side diffs.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Nishant Gupta"
+  },
+  "license": "Apache-2.0",
+  "keywords": ["aem", "eds", "visual", "screenshot", "regression", "playwright", "diff"],
+  "repository": "https://github.com/nishantgupta/eds-skills"
+}
