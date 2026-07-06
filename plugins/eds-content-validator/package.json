@@ -1,5 +1,5 @@
 {
-  "name": "eds-content-compare",
+  "name": "eds-content-validator",
   "version": "1.0.0",
   "type": "module",
   "description": "Content comparison between prod and EDS live sites",

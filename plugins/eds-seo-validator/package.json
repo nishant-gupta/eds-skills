@@ -1,15 +1,11 @@
 {
   "name": "eds-seo-validator",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "type": "commonjs",
+  "description": "SEO audit toolkit for AEM Edge Delivery Services sites",
+  "author": "Nishant Gupta",
+  "license": "Apache-2.0",
+  "keywords": ["aem", "eds", "seo", "metadata", "core-web-vitals", "lighthouse", "playwright"],
   "dependencies": {
     "playwright": "1.60.0"
   }
