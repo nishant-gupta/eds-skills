@@ -506,7 +506,7 @@ node ~/.claude/skills/eds-seo-validator/scripts/check-seo-compare.mjs \
 | `keywords` | No |
 | `robots meta` | No |
 
-**Canonical and og:image URL comparison** normalises to path only — so `https://www.wellsfargo.com/mortgage/` and `https://main--wellsfargo--mkbansal1.aem.live/mortgage/` are treated as matching.
+**Canonical and og:image URL comparison** normalises to path only — so `https://www.example.com/mortgage/` and `https://main--mysite--myorg.aem.live/mortgage/` are treated as matching.
 
 ### Per-field diff values
 

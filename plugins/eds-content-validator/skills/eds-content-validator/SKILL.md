@@ -59,7 +59,7 @@ Once confirmed, **probe the first URL** on EDS:
 ```bash
 node -e "
 const urls = require('/tmp/sitemap-urls.json');
-const base = 'https://main--wellsfargo--mkbansal1.aem.live';
+const base = 'https://main--mysite--myorg.aem.live';
 const { URL } = require('url');
 const first = base + new URL(urls[0]).pathname;
 fetch(first, { method: 'HEAD' }).then(r => console.log('Probe status:', r.status, first));
@@ -90,8 +90,8 @@ Run this command and return the results as described below.
 
 node .claude/skills/eds-content-validator/scripts/check-content.mjs \
   /tmp/sitemap-urls.json \
-  "https://www.wellsfargo.com" \
-  "https://main--wellsfargo--mkbansal1.aem.live" \
+  "https://www.example.com" \
+  "https://main--mysite--myorg.aem.live" \
   /tmp/eds-content-report \
   [--threshold=90] \
   [--concurrency=5] \
@@ -146,8 +146,8 @@ Run this command and return the results as described below.
 cd .claude/skills/eds-content-validator && \
 node scripts/check-content-deep.mjs \
   /tmp/sitemap-urls.json \
-  "https://www.wellsfargo.com" \
-  "https://main--wellsfargo--mkbansal1.aem.live" \
+  "https://www.example.com" \
+  "https://main--mysite--myorg.aem.live" \
   /tmp/eds-content-report \
   [--threshold=90] \
   [--concurrency=2] \
@@ -180,7 +180,7 @@ Return: (same structured summary as fast compare)
 - Finding placeholder text, lorem ipsum, or TODO markers left in authored content
 - Checking images have alt text and are wrapped in `<picture>` for next-gen format delivery
 - Finding absolute links to the prod domain that should be relative
-- Checking for links to old CMS domains (`www17.wellsfargomedia.com`, etc.)
+- Checking for links to old CMS domains (`www-legacy.example.com`, etc.)
 - Auditing nav/footer pages and verifying their links resolve
 - Checking videos have fallback poster images
 - Detecting stub pages (very low word count)
@@ -192,7 +192,7 @@ Return: (same structured summary as fast compare)
 | **COMPLETENESS** | Lorem ipsum · placeholder / TODO / TBD / FIXME · unclosed `[[...]]` / `{{...}}` templates · `[INSERT ...]` patterns · ALL CAPS blocks (≥3 words, not known acronyms) · very low word count (<20 words = stub page) |
 | **IMAGES** | Missing or empty `alt` attribute · image URL returns 404 (async HEAD check) |
 | **VIDEOS** | `<video>` element missing `poster` attribute |
-| **LINKS** | Absolute link to prod domain (`wellsfargo.com`) — should be relative · absolute link to EDS domain — should be relative · link to old CMS domain (`www17.wellsfargomedia.com`) · generic/weak anchor text (`click here`, `here`, `read more`) · broken internal links (optional, with `--check-links`) |
+| **LINKS** | Absolute link to prod domain (when `--prod-domain` is set) — should be relative · absolute link to EDS domain — should be relative · link to old CMS domain (via `--old-domain`) · generic/weak anchor text (`click here`, `here`, `read more`) · broken internal links (optional, with `--check-links`) |
 | **QUALITY** | No H1 heading · multiple H1 headings |
 | **NAV/FOOTER** | Nav and footer doc pages fetch correctly · absolute links inside nav/footer · old CMS domain links · broken links in nav/footer (HEAD-checked) |
 
@@ -203,14 +203,15 @@ Run this command and return the results as described below.
 
 node .claude/skills/eds-content-validator/scripts/check-content-audit.mjs \
   /tmp/sitemap-urls.json \
-  "https://main--wellsfargo--mkbansal1.aem.live" \
+  "https://main--mysite--myorg.aem.live" \
   /tmp/eds-content-audit \
   [--concurrency=5] \
   [--max=N] \
   [--offset=N] \
   [--auth=user:pass] \
   [--check-links] \
-  [--old-domain=example.com] \
+  [--prod-domain=www.example.com] \
+  [--old-domain=www-legacy.example.com] \
   [--nav-path=/nav] \
   [--footer-path=/footer]
 
@@ -325,6 +326,7 @@ zip -r testing/content-comparison/<YYYY-MM-DD>.zip <OUTPUT_DIR>
 | `--auth=user:pass` | — | HTTP Basic Auth for EDS site |
 | `--auth-header="token ..."` | env `EDS_AUTH` | Raw `Authorization` header (EDS/AEM token / Bearer); wins over Basic |
 | `--check-links` | off | HEAD-check all relative internal links for 404s |
+| `--prod-domain=X` | — | Production hostname; absolute links to this domain are flagged as should-be-relative |
 | `--old-domain=X` | — | Extra domain to flag as old CMS (repeatable) |
 | `--nav-path=X` | `/nav` | Nav doc path on EDS |
 | `--footer-path=X` | `/footer` | Footer doc path on EDS |
@@ -373,16 +375,16 @@ Send a **single Agent tool message** with one call per batch:
 # Batch 1 (pages 1–100):
 node .claude/skills/eds-content-validator/scripts/check-content.mjs \
   /tmp/sitemap-batch-1.json \
-  "https://www.wellsfargo.com" \
-  "https://main--wellsfargo--mkbansal1.aem.live" \
+  "https://www.example.com" \
+  "https://main--mysite--myorg.aem.live" \
   /tmp/content-batch-1 \
   --max=100 --concurrency=5 --offset=0
 
 # Batch 2 (pages 101–200):
 node .claude/skills/eds-content-validator/scripts/check-content.mjs \
   /tmp/sitemap-batch-2.json \
-  "https://www.wellsfargo.com" \
-  "https://main--wellsfargo--mkbansal1.aem.live" \
+  "https://www.example.com" \
+  "https://main--mysite--myorg.aem.live" \
   /tmp/content-batch-2 \
   --max=100 --concurrency=5 --offset=100
 ```

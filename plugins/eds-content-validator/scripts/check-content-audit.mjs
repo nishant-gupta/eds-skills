@@ -10,6 +10,7 @@
  *     [--auth-header="token ..."] (raw Authorization header — EDS/AEM token/Bearer; or env EDS_AUTH)
  *     [--check-links]            (HEAD-check all unique internal href targets)
  *     [--check-spelling]         (spell-check page text using English dictionary)
+ *     [--prod-domain=example.com] (production hostname; absolute links to this domain are flagged as should-be-relative)
  *     [--old-domain=example.com] (extra domain to flag as old CMS, repeatable)
  *     [--nav-path=/nav]          (nav doc path to audit, default: /nav)
  *     [--footer-path=/footer]    (footer doc path to audit, default: /footer)
@@ -45,13 +46,10 @@ const AUTH           = opt('auth');
 const AUTH_HEADER    = opt('auth-header') ?? process.env.EDS_AUTH ?? null;
 const CHECK_LINKS    = hasFlag('check-links');
 const CHECK_SPELLING = hasFlag('check-spelling');
+const PROD_DOMAIN    = opt('prod-domain');
 const NAV_PATH       = opt('nav-path') ?? '/nav';
 const FOOTER_PATH    = opt('footer-path') ?? '/footer';
-const OLD_DOMAINS    = [
-  'www17.wellsfargomedia.com',
-  'wellsfargomedia.com',
-  ...optAll('old-domain'),
-];
+const OLD_DOMAINS    = optAll('old-domain');
 
 // ─── Spell checker (lazy-loaded only when --check-spelling is set) ────────────
 
@@ -70,20 +68,10 @@ async function initSpellChecker() {
   return spellChecker;
 }
 
-// Words to always skip in spell checking (brand names, automotive terms, Indian English, abbreviations)
+// Words to always skip in spell checking (common abbreviations, acronyms, and tech terms)
 const SPELL_ALLOWLIST = new Set([
-  // Maruti / Suzuki brand and model names
-  'maruti', 'suzuki', 'baleno', 'brezza', 'ciaz', 'celerio', 'dzire', 'ertiga', 'fronx',
-  'ignis', 'jimny', 'nexa', 'spresso', 'vitara', 'wagonr', 'xl6', 'eeco', 'kizashi',
-  'ritz', 'alto', 'swift', 'swift', 'omni', 'versa', 'gypsy',
-  // Common automotive terms
-  'suv', 'cng', 'lpg', 'mileage', 'powertrain', 'torque', 'turbo', 'petrol', 'diesel',
-  'adas', 'esp', 'abs', 'ebd', 'hev', 'phev', 'bev', 'agm', 'vvt', 'crdi',
-  // Indian English / proper nouns
-  'lakh', 'crore', 'rupee', 'rupees', 'india', 'indian', 'gujarat', 'haryana', 'manesar',
-  'gurugram', 'gurgaon', 'mundra', 'nexa', 'msil', 'mou', 'rnd', 'fy', 'q1', 'q2', 'q3', 'q4',
-  // Common abbreviations and acronyms
-  'csr', 'ipo', 'agm', 'egm', 'idi', 'idtr', 'adtt', 'iti', 'iim', 'iit',
+  // Common business abbreviations and acronyms
+  'csr', 'ipo', 'agm', 'egm', 'mou', 'rnd', 'fy', 'q1', 'q2', 'q3', 'q4',
   'ceo', 'cfo', 'coo', 'md', 'vp', 'hr', 'pr', 'ev', 'oe',
   // Tech / web
   'html', 'css', 'url', 'seo', 'pdf', 'jpg', 'png', 'svg', 'api', 'ui', 'ux',
@@ -392,7 +380,7 @@ function checkLinks(mainHtml) {
     if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) continue;
 
     // Absolute links to the prod domain that should be relative
-    if (/https?:\/\/(?:www\.)?wellsfargo\.com\//i.test(href)) {
+    if (PROD_DOMAIN && new RegExp(`https?://(?:www\\.)?${PROD_DOMAIN.replace(/\./g, '\\.')}`, 'i').test(href)) {
       issues.push({ href, issue: 'Absolute link to prod domain (should be relative)', category: 'LINKS' });
       internalHrefs.push(href);
       continue;

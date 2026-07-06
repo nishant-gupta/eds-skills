@@ -32,7 +32,7 @@ This only needs to be run once per machine.
 
 ### Step 1: Confirm sitemap JSON
 
-The script expects the same `/tmp/sitemap-urls.json` format used by `eds-sitemap-checker` and `eds-seo-validator` — a JSON array of original sitemap URLs (e.g. from `www.wellsfargo.com`).
+The script expects the same `/tmp/sitemap-urls.json` format used by `eds-sitemap-checker` and `eds-seo-validator` — a JSON array of original sitemap URLs (e.g. from `www.example.com`).
 
 ```bash
 node -e "const u=require('/tmp/sitemap-urls.json'); console.log(u.length, 'URLs ready')"
@@ -169,8 +169,8 @@ Send **a single Agent tool message** with multiple parallel Agent calls — one 
 Run this command and return stdout:
 node .claude/skills/eds-visual-compare/scripts/check-visual.mjs \
   /tmp/sitemap-batch-1.json \
-  "https://www.wellsfargo.com" \
-  "https://main--wellsfargo--mkbansal1.aem.live" \
+  "https://www.example.com" \
+  "https://main--mysite--myorg.aem.live" \
   /tmp/visual-batch-1 \
   --max=50 --concurrency=5
 
@@ -178,8 +178,8 @@ node .claude/skills/eds-visual-compare/scripts/check-visual.mjs \
 Run this command and return stdout:
 node .claude/skills/eds-visual-compare/scripts/check-visual.mjs \
   /tmp/sitemap-batch-2.json \
-  "https://www.wellsfargo.com" \
-  "https://main--wellsfargo--mkbansal1.aem.live" \
+  "https://www.example.com" \
+  "https://main--mysite--myorg.aem.live" \
   /tmp/visual-batch-2 \
   --max=50 --concurrency=5
 ```
@@ -305,8 +305,8 @@ For a first run, use `--max=20` to validate the setup, then scale up.
 # Quick test with 5 pages
 cd .claude/skills/eds-visual-compare && node scripts/check-visual.mjs \
   /tmp/sitemap-live-urls.json \
-  "https://www.wellsfargo.com" \
-  "https://main--wellsfargo--mkbansal1.aem.live" \
+  "https://www.example.com" \
+  "https://main--mysite--myorg.aem.live" \
   /tmp/eds-visual-report \
   --max=5 \
   --threshold=5
