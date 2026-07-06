@@ -1,0 +1,9 @@
+{
+  "name": "eds-visual-compare",
+  "version": "1.0.0",
+  "summary": "Full-page visual regression comparison between a production site and an AEM Edge Delivery Services (EDS) domain using Playwright screenshots and pixel diffing.",
+  "private": false,
+  "skills": {
+    "eds-visual-compare": { "path": "skills/eds-visual-compare/SKILL.md" }
+  }
+}

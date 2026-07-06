@@ -1,7 +1,9 @@
 ---
 name: eds-sitemap-checker
 description: Use this skill when the user wants to check, audit, or validate URLs from a live website against an AEM Edge Delivery Services (EDS) domain. Triggers on phrases like "check sitemap", "audit urls", "validate pages on EDS", "check which pages exist on EDS", "sitemap migration check", "page status check", or "which pages are 404 on EDS".
-version: 1.0.0
+license: Apache-2.0
+metadata:
+  version: "1.0.0"
 ---
 
 # EDS Sitemap Checker

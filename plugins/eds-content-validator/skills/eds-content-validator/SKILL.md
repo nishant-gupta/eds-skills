@@ -1,7 +1,9 @@
 ---
 name: eds-content-validator
 description: Use this skill when the user wants to validate, audit, or compare the text content of AEM Edge Delivery Services (EDS) pages. Triggers on phrases like "content validation", "content audit", "content compare", "compare content", "content parity", "content migration check", "missing content", "content gaps", "word count diff", "heading structure check", "CTA text gaps", "verify migrated content", "check content", "content coverage", "placeholder text", "lorem ipsum", "broken links", "missing alt text", "image 404", "old CMS domain", "absolute links", "content quality", "grammar check".
-version: 1.1.0
+license: Apache-2.0
+metadata:
+  version: "1.1.0"
 ---
 
 # EDS Content Validator

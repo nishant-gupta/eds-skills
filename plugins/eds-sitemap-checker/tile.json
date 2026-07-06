@@ -1,0 +1,9 @@
+{
+  "name": "eds-sitemap-checker",
+  "version": "1.0.0",
+  "summary": "Fetch a live site's sitemap and check each URL against an AEM Edge Delivery Services (EDS) domain for HTTP status — surfaces 404s, redirects, and migration gaps.",
+  "private": false,
+  "skills": {
+    "eds-sitemap-checker": { "path": "skills/eds-sitemap-checker/SKILL.md" }
+  }
+}

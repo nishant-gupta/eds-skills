@@ -1,3 +1,11 @@
+---
+name: eds-visual-compare
+description: Use this skill when the user wants to visually compare production pages against AEM Edge Delivery Services (EDS) pages. Triggers on phrases like "visual compare", "screenshot diff", "visual regression", "layout diff", "pixel diff", "visual parity", "check layout", "compare screenshots", "prod vs EDS visual", "visual migration check", "page looks different", "layout broken", "visual sign-off".
+license: Apache-2.0
+metadata:
+  version: "1.0.0"
+---
+
 # EDS Visual Compare
 
 Full-page visual regression comparison between a production site and an AEM Edge Delivery Services (EDS) domain. Captures screenshots at desktop, tablet, and mobile viewports using Playwright, diffs them pixel-by-pixel with pixelmatch, and generates a self-contained HTML report with before / after / diff images.
